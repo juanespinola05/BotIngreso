@@ -1,7 +1,7 @@
 const { Client, Collection } = require('discord.js');
 const client = new Client({partials: ["REACTION","MESSAGE","CHANNEL"]});
-const { token } = require('keys.json');
 const { readdirSync } = require('fs');
+require('dotenv').config();
 
 let module_categories = ["commands","events","functions"];
 
@@ -36,4 +36,4 @@ client.on("guildMemberRemove", (member) => {
     client.events.get("guildMemberRemove").run(client, member);
 });*/
 
-client.login(proccess.env.HEROKU_TOKEN||token);
+client.login(process.env.HEROKU_TOKEN);
