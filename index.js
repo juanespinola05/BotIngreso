@@ -1,31 +1,32 @@
+/* eslint-disable no-undef */
 const { Client, Collection } = require('discord.js');
-const client = new Client({partials: ["REACTION","MESSAGE","CHANNEL"]});
-const { token } = require('keys.json');
+const client = new Client({ partials: ['REACTION', 'MESSAGE', 'CHANNEL'] });
+const { token } = require('./keys.json');
 const { readdirSync } = require('fs');
 
-let module_categories = ["commands","events","functions"];
+const module_categories = ['commands', 'events', 'functions'];
 
 for(category of module_categories) {
 
-    client[category] = new Collection();
-    var files = readdirSync(`./${category}`).filter(f => f.endsWith('.js'));
-    
-    for(file of files) {
-        let module = require(`./${category}/${file}`);
-        client[category].set(module.name, module);
-        console.info(`[${category}] ${file} correctly loaded.`);
-    }
+	client[category] = new Collection();
+	const files = readdirSync(`./${category}`).filter(f => f.endsWith('.js'));
+
+	for(file of files) {
+		const module = require(`./${category}/${file}`);
+		client[category].set(module.name, module);
+		console.info(`[${category}] ${file} correctly loaded.`);
+	}
 
 }
 
-//Client listeners
+// Client listeners
 
-client.on("ready", () => {
-    client.events.get("ready").run(client);
+client.on('ready', () => {
+	client.events.get('ready').run(client);
 });
 
-client.on("message", (message) => {
-    client.events.get("message").run(client, message);
+client.on('message', (message) => {
+	client.events.get('message').run(client, message);
 });
 /*
 client.on("messageReactionAdd", (reaction, user) => {
@@ -36,4 +37,4 @@ client.on("guildMemberRemove", (member) => {
     client.events.get("guildMemberRemove").run(client, member);
 });*/
 
-client.login(proccess.env.HEROKU_TOKEN||token);
+client.login(process.env.HEROKU_TOKEN || token);

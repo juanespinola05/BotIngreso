@@ -1,10 +1,10 @@
 {
-    "token": "ODAzOTg2MTA5NTIzNjg5NTEz.YBFwaQ.w3Rvpf0x7g0lhkPcYitI9wkLFDA",
-    "db": {
-        "host": "remotemysql.com",
-        "database": "Bgk0P8xrt0",
-        "username": "Bgk0P8xrt0",
-        "password": "2n0JyhIjOb",
-        "port": 3306
-    }
+  "token": "ODA0MzkwNDk4MzE1Nzk2NDkw.YBLpBw.gx3Ac4X0hoJLBECFVQNXZOpu_IQ",
+  "db": {
+    "host": "remotemysql.com",
+    "database": "Bgk0P8xrt0",
+    "username": "Bgk0P8xrt0",
+    "password": "2n0JyhIjOb",
+    "port": 3306
+  }
 }
