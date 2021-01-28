@@ -1,6 +1,7 @@
 {
-    "token": "ODAzOTg2MTA5NTIzNjg5NTEz.YBFwaQ.P_QnMNJprDlgV79xkGp0ITi1hqY",
+    "token": "ODAzOTg2MTA5NTIzNjg5NTEz.YBFwaQ.w3Rvpf0x7g0lhkPcYitI9wkLFDA",
     "prefix": "-",
+    "color": "#ff0000",
     "db": {
         "host": "remotemysql.com",
         "database": "Bgk0P8xrt0",

@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js');
 const { prefix } = require('../json/config.json');
 const ms = require("ms");
 const PrettyMS = require('pretty-ms');
+const alreadyUsed = new Set();
 
 module.exports = {
     name: "clases",
@@ -11,9 +12,18 @@ module.exports = {
     cooldown: 0,
     format: `${prefix}clases <m/t>`,
     run: async (client, message, argumentos) => {
-        if(!message.content.startsWith(prefix) || !message.member.hasPermission("ADMINISTRATOR")) return;
-        if(message.author.id != "338104072634761216") return;
+        if(!message.content.startsWith(prefix)) return;
         
+        if(alreadyUsed.has(message.author.id)) {
+            return message.channel.send("Aguanta un poco, recien preguntaste").then(m => m.delete({timeout: 5000}));
+        }
+        else {
+            alreadyUsed.add(message.author.id);
+            setTimeout(() => {
+                alreadyUsed.delete(message.author.id)
+            },60000);
+        }
+
         var conn = await client.functions.get("dbconnection").run();
         if(!conn) return message.channel.send("No connection available.");
 

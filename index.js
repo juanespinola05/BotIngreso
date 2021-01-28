@@ -27,13 +27,13 @@ client.on("ready", () => {
 client.on("message", (message) => {
     client.events.get("message").run(client, message);
 });
-
+/*
 client.on("messageReactionAdd", (reaction, user) => {
     client.events.get("messageReactionAdd").run(client, reaction, user);
 });
 
 client.on("guildMemberRemove", (member) => {
     client.events.get("guildMemberRemove").run(client, member);
-});
+});*/
 
 client.login(config.token);

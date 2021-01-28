@@ -4,17 +4,17 @@ const { prefix, color } = require('../json/config.json');
 module.exports = {
     name: "say",
     aliases: [],
-    description: "Send message to stated channel as bot",
+    description: "Enviar un mensaje a un canal",
     category: "staff",
     cooldown: 0,
-    format: `${prefix}say <channel> <msg> [-embed/-server/-timestamp/-author]`,
+    format: `${prefix}say <canal> <msg> [-embed/-server/-timestamp/-author]`,
     run: async (client, message, argumentos) => {
         if(!message.content.startsWith(prefix) || !message.member.hasPermission("ADMINISTRATOR")) return;
         
         var channel = message.mentions.channels.first();
-        if(!channel) return message.channel.send("Pin a channel");
+        if(!channel) return message.channel.send("Menciona un canal");
 
-        if(!argumentos[1]) return message.channel.send("Provide a message.");
+        if(!argumentos[1]) return message.channel.send("Indica un mensaje.");
 
         var spliceFlag = (flag) => {
             argumentos.splice( argumentos.indexOf(flag), 1);
@@ -48,12 +48,12 @@ module.exports = {
 
         try {
 
-            message.channel.send(":white_check_mark: | Message sent!");
+            message.channel.send(":white_check_mark: | Mensaje enviado!");
             return channel.send(msg);
 
         } catch (error) {
             console.log(error);
-            return message.channel.send("An error ocurred while trying to send the message.");
+            return message.channel.send("Ha ocurrido un error.");
         }
     }
 }

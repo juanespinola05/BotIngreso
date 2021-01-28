@@ -10,7 +10,7 @@ module.exports = {
         client.user.setPresence({
             status: "online",
             activity: {
-                name: "IDEAS HDPPP",
+                name: "mover derecha mover",
                 type: "PLAYING"
             }
         });
