@@ -2,58 +2,59 @@ const { MessageEmbed } = require('discord.js');
 const { prefix, color } = require('../json/config.json');
 
 module.exports = {
-    name: "say",
-    aliases: [],
-    description: "Enviar un mensaje a un canal",
-    category: "staff",
-    cooldown: 0,
-    format: `${prefix}say <canal> <msg> [-embed/-server/-timestamp/-author]`,
-    run: async (client, message, argumentos) => {
-        if(!message.content.startsWith(prefix) || !message.member.hasPermission("ADMINISTRATOR")) return;
-        
-        var channel = message.mentions.channels.first();
-        if(!channel) return message.channel.send("Menciona un canal");
+	name: 'say',
+	aliases: [],
+	description: 'Enviar un mensaje a un canal',
+	category: 'staff',
+	cooldown: 0,
+	format: `${prefix}say <canal> <msg> [-embed/-server/-timestamp/-author]`,
+	run: async (client, message, argumentos) => {
+		if(!message.content.startsWith(prefix) || !message.member.hasPermission('ADMINISTRATOR')) return;
 
-        if(!argumentos[1]) return message.channel.send("Indica un mensaje.");
+		const channel = message.mentions.channels.first();
+		if(!channel) return message.channel.send('Menciona un canal');
 
-        var spliceFlag = (flag) => {
-            argumentos.splice( argumentos.indexOf(flag), 1);
-        }
+		if(!argumentos[1]) return message.channel.send('Indica un mensaje.');
 
-        var embed = false;
-        var messageEmbed = new MessageEmbed()
-            .setColor(color);
-        
-        //extra flags
-        if(argumentos.includes("-embed")) {
-            spliceFlag("-embed");
-            embed = true;
-        }
-        if(argumentos.includes("-server")) {
-            spliceFlag("-server");
-            messageEmbed.setAuthor(message.guild.name, message.guild.iconURL());
-        }
-        if(argumentos.includes("-author")) {
-            spliceFlag("-author");
-            messageEmbed.setFooter(message.author.tag, message.author.displayAvatarURL());
-        }
-        if(argumentos.includes("-timestamp")) {
-            spliceFlag("-timestamp");
-            messageEmbed.setTimestamp();
-        }
+		const spliceFlag = (flag) => {
+			argumentos.splice(argumentos.indexOf(flag), 1);
+		};
 
-        var content = await client.functions.get("translateCodes").run(argumentos.slice(1).join(" "));
+		let embed = false;
+		const messageEmbed = new MessageEmbed()
+			.setColor(color);
 
-        var msg = embed ? messageEmbed.setDescription(content) : content;
+		// extra flags
+		if(argumentos.includes('-embed')) {
+			spliceFlag('-embed');
+			embed = true;
+		}
+		if(argumentos.includes('-server')) {
+			spliceFlag('-server');
+			messageEmbed.setAuthor(message.guild.name, message.guild.iconURL());
+		}
+		if(argumentos.includes('-author')) {
+			spliceFlag('-author');
+			messageEmbed.setFooter(message.author.tag, message.author.displayAvatarURL());
+		}
+		if(argumentos.includes('-timestamp')) {
+			spliceFlag('-timestamp');
+			messageEmbed.setTimestamp();
+		}
 
-        try {
+		const content = await client.functions.get('translateCodes').run(argumentos.slice(1).join(' '));
 
-            message.channel.send(":white_check_mark: | Mensaje enviado!");
-            return channel.send(msg);
+		const msg = embed ? messageEmbed.setDescription(content) : content;
 
-        } catch (error) {
-            console.log(error);
-            return message.channel.send("Ha ocurrido un error.");
-        }
-    }
-}
+		try {
+
+			message.channel.send(':white_check_mark: | Mensaje enviado!');
+			return channel.send(msg);
+
+		}
+		catch (error) {
+			console.log(error);
+			return message.channel.send('Ha ocurrido un error.');
+		}
+	},
+};
