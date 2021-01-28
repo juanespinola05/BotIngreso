@@ -11,6 +11,7 @@ module.exports = {
         var command = client.commands.get(cmd) || client.commands.find((c) => c.aliases.includes(cmd));
 
         if(command) {
+            if(!message.content.startsWith(prefix)) return;
             command.run(client, message, argumentos);
         }
     }

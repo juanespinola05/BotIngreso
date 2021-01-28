@@ -9,7 +9,7 @@ module.exports = {
     aliases: [],
     description: "Ver clases activas",
     category: "utilidad",
-    cooldown: 0,
+    cooldown: 60000,
     format: `${prefix}clases <m/t>`,
     run: async (client, message, argumentos) => {
         if(!message.content.startsWith(prefix)) return;
@@ -21,7 +21,7 @@ module.exports = {
             alreadyUsed.add(message.author.id);
             setTimeout(() => {
                 alreadyUsed.delete(message.author.id)
-            },60000);
+            },this.cooldown);
         }
 
         var conn = await client.functions.get("dbconnection").run();
