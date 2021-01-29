@@ -23,7 +23,7 @@ module.exports = {
 		if (!argumentos[0]) {
 			return message.channel.send(
 				`\`\`\`Ingresa un audio aca tenes una lista:\n${Object.keys(audio)
-					.map((x) => `-${x}`)
+					.map((x) => `- ${x}`)
 					.join('\n')}\`\`\``,
 			);
 		}
@@ -42,7 +42,7 @@ module.exports = {
 			.join()
 			.then((connection) => {
 				const dispatcher = connection.play(
-					`./audio/${audio[argumentos[0].url]}`,
+					`./audio/${audio[argumentos[0]].url}`,
 					{ volume: 1 },
 				);
 				dispatcher.on('finish', () => {
