@@ -23,7 +23,7 @@ module.exports = {
 		const conn = await client.functions.get('dbconnection').run();
 		if (!conn) return message.channel.send('No connection available.');
 
-		const qry = 'SELECT * FROM `clases`';
+		const qry = 'SELECT * FROM `clases` WHERE fromMS = 0';
 
 		conn.query(qry, (err, rows, fields) => {
 			if (err) {
