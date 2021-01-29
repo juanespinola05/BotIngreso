@@ -13,6 +13,7 @@ module.exports = {
 				database: process.env.HEROKU_DB_USER,
 				port: 3306,
 			});
+
 			connection.connect(function(error) {
 				if (error) {
 					console.log(error);

@@ -16,7 +16,7 @@ module.exports = {
 	run: async (client, message, argumentos) => {
 		if (!message.content.startsWith(prefix)) return;
 
-		if (alreadyUsed.has(message.author.id)) {
+		if (alreadyUsed.has(message.author.id) && !message.member.hasPermission('ADMINISTRATOR')) {
 			return message.channel
 				.send('Aguanta un poco, recien preguntaste')
 				.then((m) => m.delete({ timeout: 5000 }));
@@ -27,16 +27,21 @@ module.exports = {
 			alreadyUsed.delete(message.author.id);
 		}, this.cooldown);
 
+	    message.channel.startTyping();
+
 		const conn = await client.functions.get('dbconnection').run();
-		if (!conn) return message.channel.send('No connection available.');
+		if (!conn) {
+			message.channel.stopTyping();
+			return message.channel.send('No connection available.');
+		}
 
 		const date = new Date();
 		const info = {
 			day: date.getDay().toString(),
 			nowMS:
-        ms(`${date.getHours()}h`) +
-        ms(`${date.getMinutes()}m`) +
-        ms(`${date.getSeconds()}s`),
+                ms(`${date.getHours()}h`) +
+                ms(`${date.getMinutes()}m`) +
+                ms(`${date.getSeconds()}s`),
 		};
 
 		let qry = `SELECT * FROM \`clases\` WHERE fromMS <= ${info.nowMS} AND toMS > ${info.nowMS} AND \`dias\` LIKE '%${info.day}%'`;
@@ -49,11 +54,13 @@ module.exports = {
 		conn.query(qry, (err, rows) => {
 			conn.end();
 			if (err) {
+				message.channel.stopTyping();
 				console.error(err);
 				return message.channel.send('error');
 			}
 
 			if (!rows.length) {
+				message.channel.stopTyping();
 				return message.channel.send('No se han encontrado clases.');
 			}
 
@@ -87,21 +94,16 @@ module.exports = {
 				}
 
 				const emoji =
-          rows[i].toMS - info.nowMS <= 600000 ? '<:culminando:804416039273889882>' : '<:online:804069579579850823>';
+                    rows[i].toMS - info.nowMS <= 600000 ? '<:culminando:804416039273889882>' : '<:online:804069579579850823>';
 
 				embed.addField(
-					`${rows[i].materia.toUpperCase()} ${rows[
-						i
-					].tipo.toUpperCase()} ${rows[i].turno.toUpperCase()} ${
-						rows[i].comisiones
-					}`,
+					`${rows[i].materia.toUpperCase()} ${rows[i].tipo.toUpperCase()} ${rows[i].turno.toUpperCase()} ${rows[i].comisiones}`,
 					`${emoji} [Clic para ir al link](${rows[i].link}). Contraseña: ${rows[i].password}` +
-            `\nProfesor/a ${rows[i].profesor} // ${PrettyMS(from, {
-            		colonNotation: true,
-            })}-${PrettyMS(to, { colonNotation: true })}`,
+                    `\nProfesor/a ${rows[i].profesor} // ${PrettyMS(from, { colonNotation: true })}-${PrettyMS(to, { colonNotation: true })}`,
 				);
 			}
 
+			message.channel.stopTyping();
 			return message.channel.send(embed);
 		});
 	},

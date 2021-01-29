@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 const { MessageEmbed } = require('discord.js');
 const { prefix, color } = require('../json/config.json');
 
@@ -11,7 +12,7 @@ module.exports = {
 	run: async (client, message, argumentos) => {
 		if (
 			!message.content.startsWith(prefix) ||
-      !message.member.hasPermission('ADMINISTRATOR')
+      		!message.member.hasPermission('ADMINISTRATOR')
 		) {return;}
 
 		const channel = message.mentions.channels.first();
@@ -24,6 +25,7 @@ module.exports = {
 		};
 
 		let embed = false;
+		let everyone = false;
 		const messageEmbed = new MessageEmbed().setColor(color);
 
 		// extra flags
@@ -46,6 +48,10 @@ module.exports = {
 			spliceFlag('-timestamp');
 			messageEmbed.setTimestamp();
 		}
+		if (argumentos.includes('-everyone')) {
+			spliceFlag('-everyone');
+			everyone = true;
+		}
 
 		const content = await client.functions
 			.get('translateCodes')
@@ -54,8 +60,16 @@ module.exports = {
 		const msg = embed ? messageEmbed.setDescription(content) : content;
 
 		try {
-			message.channel.send(':white_check_mark: | Mensaje enviado!');
-			return channel.send(msg);
+
+			if(everyone) {
+				const mensaje_enviado = embed ?
+					await channel.send(channel.guild.roles.everyone, msg) :
+					await channel.send(`${channel.guild.roles.everyone} ${msg}`);
+
+				mensaje_enviado.channel.send(':white_check_mark: | Mensaje enviado!');
+			}
+			else { return channel.send(msg); }
+
 		}
 		catch (error) {
 			console.log(error);

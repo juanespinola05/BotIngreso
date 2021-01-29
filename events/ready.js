@@ -4,7 +4,9 @@
 module.exports = {
 	name: 'ready',
 	run: async (client) => {
+
 		console.info('I\'m online!');
+
 		client.user.setPresence({
 			status: 'online',
 			activity: {
