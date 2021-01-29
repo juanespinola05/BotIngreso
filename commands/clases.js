@@ -35,7 +35,7 @@ module.exports = {
 			return message.channel.send('No connection available.');
 		}
 
-		const date = new Date();
+		const date = new Date(new Date().toLocaleDateString('en-US', { timezone: 'America/Argentina/Buenos_Aires' }));
 		const info = {
 			day: date.getDay().toString(),
 			nowMS:
