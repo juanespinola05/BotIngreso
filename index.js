@@ -34,5 +34,4 @@ client.on("messageReactionAdd", (reaction, user) => {
 client.on("guildMemberRemove", (member) => {
     client.events.get("guildMemberRemove").run(client, member);
 });*/
-
 client.login(process.env.HEROKU_TOKEN);
