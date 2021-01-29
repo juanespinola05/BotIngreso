@@ -16,7 +16,7 @@ module.exports = {
 	run: async (client, message, argumentos) => {
 		if (!message.content.startsWith(prefix)) return;
 
-		if (alreadyUsed.has(message.author.id) && !message.member.hasPermission('ADMINISTRATOR')) {
+		if (alreadyUsed.has(message.author.id)) {
 			return message.channel
 				.send('Aguanta un poco, recien preguntaste')
 				.then((m) => m.delete({ timeout: 5000 }));
