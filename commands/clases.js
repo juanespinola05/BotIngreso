@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 const { MessageEmbed } = require('discord.js');
 const ms = require('ms');
 const PrettyMS = require('pretty-ms');
@@ -40,7 +41,9 @@ module.exports = {
 
 		let qry = `SELECT * FROM \`clases\` WHERE fromMS <= ${info.nowMS} AND toMS > ${info.nowMS} AND \`dias\` LIKE '%${info.day}%'`;
 		if (argumentos[0]) {
-			if (['t', 'm'].includes(argumentos[0].toLowerCase())) {qry += ` AND turno = '${argumentos[0].toLowerCase()}'`;}
+			if (['t', 'm'].includes(argumentos[0].toLowerCase())) {
+				qry += ` AND turno = '${argumentos[0].toLowerCase()}'`;
+			}
 		}
 
 		conn.query(qry, (err, rows) => {
@@ -50,7 +53,9 @@ module.exports = {
 				return message.channel.send('error');
 			}
 
-			if (!rows.length) {return message.channel.send('No se han encontrado clases.');}
+			if (!rows.length) {
+				return message.channel.send('No se han encontrado clases.');
+			}
 
 			const embed = new MessageEmbed()
 				.setColor('#5cd15c')
@@ -82,7 +87,7 @@ module.exports = {
 				}
 
 				const emoji =
-          rows[i].toMS - info.nowMS <= 600000 ? ('<:culminando:804416039273889882>') : ('<:online:804069579579850823>');
+          rows[i].toMS - info.nowMS <= 600000 ? '<:culminando:804416039273889882>' : '<:online:804069579579850823>';
 
 				embed.addField(
 					`${rows[i].materia.toUpperCase()} ${rows[
@@ -91,7 +96,8 @@ module.exports = {
 						rows[i].comisiones
 					}`,
 					`${emoji} [Clic para ir al link](${rows[i].link}). Contraseña: ${rows[i].password}` +
-            `\nProfesor/a ${rows[i].profesor} // ${PrettyMS(from, { colonNotation: true,
+            `\nProfesor/a ${rows[i].profesor} // ${PrettyMS(from, {
+            		colonNotation: true,
             })}-${PrettyMS(to, { colonNotation: true })}`,
 				);
 			}

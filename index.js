@@ -6,17 +6,15 @@ require('dotenv').config();
 
 const module_categories = ['commands', 'events', 'functions'];
 
-for(category of module_categories) {
-
+for (category of module_categories) {
 	client[category] = new Collection();
-	const files = readdirSync(`./${category}`).filter(f => f.endsWith('.js'));
+	const files = readdirSync(`./${category}`).filter((f) => f.endsWith('.js'));
 
-	for(file of files) {
+	for (file of files) {
 		const module = require(`./${category}/${file}`);
 		client[category].set(module.name, module);
 		console.info(`[${category}] ${file} correctly loaded.`);
 	}
-
 }
 
 // Client listeners

@@ -9,7 +9,6 @@ module.exports = {
 				const stringSplitted = string.split(codes[i]);
 				string = stringSplitted.join(codesReplacements[i]);
 			}
-
 			res(string);
 		});
 	},
