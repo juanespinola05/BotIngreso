@@ -1,6 +1,5 @@
-// const Discord = require("discord.js");
-const keysDB = require('./../keys.json');
 const mysql = require('mysql');
+require('dotenv').config();
 
 module.exports = {
 	name: 'dbconnection',
@@ -8,11 +7,11 @@ module.exports = {
 		return new Promise((res, rej) => {
 			// conexión con DB
 			const connection = mysql.createConnection({
-				host: keysDB.db.host,
-				user: keysDB.db.username,
-				password: keysDB.db.password,
-				database: keysDB.db.database,
-				port: keysDB.db.port,
+				host: 'remotemysql.com',
+				user: process.env.HEROKU_DB_USER,
+				password: process.env.HEROKU_DB_PASS,
+				database: process.env.HEROKU_DB_USER,
+				port: 3306,
 			});
 			connection.connect(function(error) {
 				if (error) {

@@ -11,9 +11,12 @@ module.exports = {
       client.commands.get(cmd) ||
       client.commands.find((c) => c.aliases.includes(cmd));
 
-		if (command) {
-			if (!message.content.startsWith(prefix)) return;
-			command.run(client, message, argumentos);
-		}
-	},
-};
+        const argumentos = message.content.slice(prefix.length).trim().split(/ +/g);
+        const cmd = argumentos.shift().toLowerCase();
+        var command = client.commands.get(cmd) || client.commands.find((c) => c.aliases.includes(cmd));
+
+        if(command) {
+            command.run(client, message, argumentos);
+        }
+    }
+}
