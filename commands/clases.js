@@ -36,6 +36,7 @@ module.exports = {
 		}
 
 		const date = new Date(new Date().toLocaleDateString('en-US', { timezone: 'America/Argentina/Buenos_Aires' }));
+		console.log(`${date.getHours()} ${date.getMinutes()} ${date.getSeconds()}`);
 		const info = {
 			day: date.getDay().toString(),
 			nowMS:
