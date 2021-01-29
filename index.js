@@ -2,6 +2,8 @@
 const { Client, Collection } = require('discord.js');
 const client = new Client({ partials: ['REACTION', 'MESSAGE', 'CHANNEL'] });
 const { readdirSync } = require('fs');
+// eslint-disable-next-line no-unused-vars
+const readDir = require('./helpers/audioIterator');
 require('dotenv').config();
 
 const module_categories = ['commands', 'events', 'functions'];
