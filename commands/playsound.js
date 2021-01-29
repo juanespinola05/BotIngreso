@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 const { prefix } = require('../json/config.json');
 const audio = require('../json/audio.json');
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
 	run: async (client, message, argumentos) => {
 		if (
 			!message.content.startsWith(prefix) ||
-      !message.member.hasPermission('ADMINISTRATOR')
+      		!message.member.hasPermission('ADMINISTRATOR')
 		) {
 			return;
 		}
