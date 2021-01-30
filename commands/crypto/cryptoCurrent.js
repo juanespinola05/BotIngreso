@@ -1,12 +1,6 @@
-const { getCoinPriceNow } = require('./../../api/coindesk');
 const { MessageEmbed } = require('discord.js');
+const { getBtc } = require('../../api/dataMap');
 
-const getBtc = async (param = 'USD') => {
-	const price = await getCoinPriceNow(param);
-	if (price !== 'error') {
-		return price.data.bpi[param];
-	}
-};
 
 const btcMsgCurrent = async (message, coin = 'USD') => {
 	const data = await getBtc(coin);
