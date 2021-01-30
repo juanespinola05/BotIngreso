@@ -1,9 +1,10 @@
 const { prefix } = require('./../json/config.json');
+const { chart } = require('./crypto/cryptoChart');
 const { btcMsgCurrent } = require('./crypto/cryptoCurrent');
 module.exports = {
 	name: 'btc',
 	aliases: ['bpi'],
-	description: 'Muestra el bpi actual, grafico 31 days',
+	description: 'Muestra el bpi actual, gráfico 31 days',
 	cooldown: 100,
 	category: 'statistics',
 	format: `${prefix}bpi <m/t>`,
@@ -19,6 +20,15 @@ module.exports = {
 			break;
 		case 'ars':
 			btcMsgCurrent(message, 'ARS');
+			break;
+		case 'chars':
+			chart(message, 'ARS');
+			break;
+		case 'chusd':
+			chart(message, 'USD');
+			break;
+		case 'custom':
+			chart(message, argumentos[1]);
 			break;
 		default:
 			return message.channel.send('comando sin especificar');

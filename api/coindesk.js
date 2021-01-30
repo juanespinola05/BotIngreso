@@ -21,6 +21,7 @@ async function getCoinHistorical31Days(param1 = 'USD') {
 	}
 	catch (error) {
 		console.error(error);
+		return 'error';
 	}
 }
 

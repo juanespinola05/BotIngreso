@@ -34,7 +34,7 @@ module.exports = {
 
 		if (!argumentos[0]) {
 			return message.channel.send(
-				'No hay argumento. ej. de formato: -wp M1 -wp T1',
+				'No hay argumento. ej. de formato: -wp M1 -wp t1',
 			);
 		}
 
@@ -43,7 +43,7 @@ module.exports = {
 			if (rows.length === 0) {
 				message.channel.stopTyping();
 				return message.channel.send(
-					'No existe esa comisión, el formato es: -wp M1',
+					'No hay argumento. ej. de formato: -wp M1 -wp t1',
 				);
 			}
 			const [{ group, url }] = rows;
