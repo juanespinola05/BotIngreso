@@ -27,6 +27,15 @@ module.exports = {
 			alreadyUsed.delete(message.author.id);
 		}, this.cooldown);
 
+		const date = new Date(new Date().toLocaleString('en-US', { timezone: 'America/Argentina/Buenos_Aires' }));
+
+		if([0, 6].includes(date.getDay())) {
+
+			const msg = date.getDay() === 0 ? 'Hoy es domingo xd' : 'Hoy es sábado';
+			return message.channel.send(msg);
+
+		}
+
 	    message.channel.startTyping();
 
 		const conn = await client.functions.get('dbconnection').run();
@@ -35,8 +44,6 @@ module.exports = {
 			return message.channel.send('No connection available.');
 		}
 
-		const date = new Date(new Date().toLocaleDateString('en-US', { timezone: 'America/Argentina/Buenos_Aires' }));
-		console.log(`${date.getHours()} ${date.getMinutes()} ${date.getSeconds()}`);
 		const info = {
 			day: date.getDay().toString(),
 			nowMS:
