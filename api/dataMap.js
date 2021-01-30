@@ -1,27 +1,16 @@
 const { getCoinHistorical31Days, getCoinPriceNow } = require('./coindesk');
 
 const getDataHist = async (argument) => {
-	try {
-		const dataHist = await getCoinHistorical31Days(argument);
-		if (dataHist.ok) {
-			return dataHist;
-		}
+	const dataHist = await getCoinHistorical31Days(argument);
+	if (dataHist !== 'error') {
+		return dataHist.data.bpi;
 	}
-	catch (err) {
-		console.log(err);
-		return err;
-	}
+	return;
 };
 const getBtc = async (param = 'USD') => {
-	try {
-		const price = await getCoinPriceNow(param);
-		if (price !== 'error') {
-			return price.data.bpi[param];
-		}
-	}
-	catch (err) {
-		console.log(err);
-		return err;
+	const price = await getCoinPriceNow(param);
+	if (price !== 'error') {
+		return price.data.bpi[param];
 	}
 };
 
