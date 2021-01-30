@@ -9,9 +9,8 @@ module.exports = {
 	description: 'Ver clases activas',
 	category: 'utilidad',
 	cooldown: 60000,
-	format: `${prefix}clases <m/t>`,
+	format: `${prefix}whatsapp <m/t>`,
 	run: async (client, message, argumentos) => {
-		if (!message.content.startsWith(prefix)) return;
 
 		if (alreadyUsed.has(message.author.id)) {
 			return message.channel
