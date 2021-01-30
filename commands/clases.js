@@ -31,7 +31,7 @@ module.exports = {
 
 		if([0, 6].includes(date.getDay())) {
 
-			const msg = date.getDay() === 0 ? 'Hoy es domingo xd' : 'Hoy es sábado';
+			const msg = date.getDay() === 0 ? 'Hoy es domingo xd' : 'Flaco no jodas es sábado';
 			return message.channel.send(msg);
 
 		}

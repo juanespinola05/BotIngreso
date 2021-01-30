@@ -65,7 +65,7 @@ module.exports = {
 				.setThumbnail(
 					'https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN=s180-rw',
 				)
-				.addField(` Link:${url}`);
+				.addField('Link:', url);
 			message.channel.send(embed);
 		});
 	},
