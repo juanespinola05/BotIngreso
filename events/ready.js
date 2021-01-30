@@ -7,12 +7,30 @@ module.exports = {
 
 		console.info('I\'m online!');
 
-		client.user.setPresence({
-			status: 'online',
-			activity: {
-				name: 'mover derecha mover',
-				type: 'PLAYING',
-			},
-		});
+		const statuses = ['mover', 'derecha', 0];
+
+		setInterval(() => {
+
+			let nextStatus;
+
+			if (statuses[2]) {
+				nextStatus = statuses[0];
+				statuses[2] = 0;
+			}
+			else {
+				nextStatus = statuses[1];
+				statuses[2] = 1;
+			}
+
+			client.user.setPresence({
+				status: 'online',
+				activity: {
+					name: nextStatus,
+					type: 'PLAYING',
+				},
+			});
+
+		}, 3000);
+
 	},
 };
