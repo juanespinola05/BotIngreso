@@ -1,22 +1,6 @@
 {
-  "dross": {
-    "url": "dross.mp3",
-    "description": ""
-  },
-  "harryfail": {
-    "url": "harryfail.mp3",
-    "description": ""
-  },
-  "mecago": {
-    "url": "mecago.mp3",
-    "description": ""
-  },
   "microsofton": {
     "url": "microsofton.mp3",
-    "description": ""
-  },
-  "noentendi": {
-    "url": "noentendi.mp3",
     "description": ""
   },
   "pesao": {
@@ -31,12 +15,41 @@
     "url": "wololo.mp3",
     "description": ""
   },
-  "y-quien-cono-es-fede": {
-    "url": "y-quien-cono-es-fede.mp3",
-    "description": ""
-  },
   "yooo": {
     "url": "yooo.mp3",
     "description": ""
+  },
+  "rey": {
+    "url": "rey.mp3"
+  },
+  "bomb": {
+    "url": "bomb.mp3"
+  },
+  "gogogo": {
+    "url": "gogogo.mp3"
+  },
+  "aoe2": {
+    "url": "aoe2.mp3"
+  },
+  "spawn": {
+    "url": "spawn.mp3"
+  },
+  "pipo": {
+    "url": "pipo.mp3"
+  },
+  "miabue": {
+    "url": "miabue.mp3"
+  },
+  "albion": {
+    "url": "albion.mp3"
+  },
+  "mission": {
+    "url": "mission.mp3"
+  },
+  "heavy":{
+    "url":"heavy.mp3"
+  },
+  "meperdonas":{
+    "url":"meperdonas.mp3"
   }
 }
