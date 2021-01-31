@@ -75,7 +75,6 @@ const chart = async (message, argument) => {
 		},
 		tooltips: {
 			callbacks: {
-				// This removes the tooltip title
 				// eslint-disable-next-line no-empty-function
 				title: function() {},
 			},
