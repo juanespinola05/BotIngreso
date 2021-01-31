@@ -1,8 +1,8 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 const { prefix } = require('../json/config.json');
-// const { MessageEmbed } = require('discord.js');
 const alreadyUsed = new Set();
 const { MessageEmbed } = require('discord.js');
+
 module.exports = {
 	name: 'wp',
 	aliases: ['comisiones', 'whatsapp', 'wsp'],
@@ -11,6 +11,7 @@ module.exports = {
 	cooldown: 60000,
 	format: `${prefix}whatsapp <m/t>`,
 	run: async (client, message, argumentos) => {
+
 		if (alreadyUsed.has(message.author.id)) {
 			return message.channel
 				.send('Aguanta un poco, recien preguntaste')
@@ -44,7 +45,7 @@ module.exports = {
 			if (rows.length === 0) {
 				message.channel.stopTyping();
 				return message.channel.send(
-					'No hay argumento. ej. de formato: -wp M1 -wp t1',
+					'Ingresa una comisión válida',
 				);
 			}
 

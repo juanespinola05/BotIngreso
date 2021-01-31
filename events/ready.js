@@ -7,6 +7,8 @@ module.exports = {
 
 		console.info('I\'m online!');
 
+		client.log = require('../helpers/log');
+
 		const statuses = ['mover', 'derecha', 0];
 
 		setInterval(() => {

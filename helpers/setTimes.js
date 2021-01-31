@@ -12,12 +12,7 @@ module.exports = {
 	cooldown: 0,
 	format: `${prefix}test`,
 	run: async (client, message, argumentos) => {
-		if (
-			!message.content.startsWith(prefix) ||
-      !message.member.hasPermission('ADMINISTRATOR')
-		) {
-			return;
-		}
+		if ( !message.member.hasPermission('ADMINISTRATOR') ) return;
 		if (message.author.id != '338104072634761216') return;
 
 		const conn = await client.functions.get('dbconnection').run();

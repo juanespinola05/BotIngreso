@@ -9,16 +9,13 @@ module.exports = {
 	category: 'juegos',
 	formato: prefix + 'playsound',
 	run: async (client, message, argumentos) => {
-		if (
-			!message.content.startsWith(prefix) ||
-      		!message.member.hasPermission('ADMINISTRATOR')
-		) {
-			return;
-		}
+		if ( !message.member.hasPermission('ADMINISTRATOR') ) return;
+
 		// si ya está conectado el bot
 		const guildConnection = client.voice.connections.find(
 			(c) => c.channel.guild.id === message.guild.id,
 		);
+		
 		if (guildConnection) return;
 
 		if (!argumentos[0]) {

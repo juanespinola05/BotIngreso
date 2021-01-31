@@ -14,7 +14,6 @@ module.exports = {
 	cooldown: 60000,
 	format: `${prefix}clases <m/t>`,
 	run: async (client, message, argumentos) => {
-		if (!message.content.startsWith(prefix)) return;
 
 		if (alreadyUsed.has(message.author.id)) {
 			return message.channel

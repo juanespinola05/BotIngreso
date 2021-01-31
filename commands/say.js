@@ -10,10 +10,7 @@ module.exports = {
 	cooldown: 0,
 	format: `${prefix}say <canal> <msg> [-embed/-server/-timestamp/-author]`,
 	run: async (client, message, argumentos) => {
-		if (
-			!message.content.startsWith(prefix) ||
-      		!message.member.hasPermission('ADMINISTRATOR')
-		) {return;}
+		if ( !message.member.hasPermission('ADMINISTRATOR') ) {return;}
 
 		const channel = message.mentions.channels.first();
 		if (!channel) return message.channel.send('Menciona un canal');

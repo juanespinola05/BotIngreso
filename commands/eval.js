@@ -9,12 +9,7 @@ module.exports = {
 	cooldown: 0,
 	format: `${prefix}eval`,
 	run: async (client, message, argumentos) => {
-		if (
-			!message.content.startsWith(prefix) ||
-      !['259536076211748887', '338104072634761216'].includes(message.author.id)
-		) {
-			return;
-		}
+		if ( !['259536076211748887', '338104072634761216'].includes(message.author.id) ) return;
 
 		const clean = (text) => {
 			if (typeof text === 'string') {
