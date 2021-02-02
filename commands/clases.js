@@ -26,7 +26,8 @@ module.exports = {
 			alreadyUsed.delete(message.author.id);
 		}, this.cooldown);
 
-		const date = new Date(new Date().toLocaleString('en-US', { timezone: 'America/Argentina/Buenos_Aires' }));
+		const localDate = new Date();
+		const date = localDate.toLocaleString('en-US', { timezone: 'America/Buenos_Aires' });
 
 		if([0, 6].includes(date.getDay())) {
 
