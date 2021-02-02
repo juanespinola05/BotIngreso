@@ -26,11 +26,12 @@ module.exports = {
 			alreadyUsed.delete(message.author.id);
 		}, this.cooldown);
 
-		const localDate = new Date();
-		const date = localDate.toLocaleString('en-US', { timezone: 'America/Buenos_Aires' });
+		function convertTZ(date, tzString) {
+			return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
+		}
 
-		console.log(localDate);
-		console.log(date);
+		const localDate = new Date();
+		const date = convertTZ(localDate, 'America/Buenos_Aires');
 
 		if([0, 6].includes(date.getDay())) {
 
