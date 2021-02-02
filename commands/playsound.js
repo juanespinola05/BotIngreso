@@ -9,7 +9,6 @@ module.exports = {
 	category: 'juegos',
 	formato: prefix + 'playsound',
 	run: async (client, message, argumentos) => {
-		if ( !message.member.hasPermission('BAN_MEMBERS') ) return;
 
 		// si ya está conectado el bot
 		const guildConnection = client.voice.connections.find(
