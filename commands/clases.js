@@ -29,6 +29,9 @@ module.exports = {
 		const localDate = new Date();
 		const date = localDate.toLocaleString('en-US', { timezone: 'America/Buenos_Aires' });
 
+		console.log(localDate);
+		console.log(date);
+
 		if([0, 6].includes(date.getDay())) {
 
 			const msg = date.getDay() === 0 ? 'Hoy es domingo xd' : 'Flaco no jodas es sábado';
