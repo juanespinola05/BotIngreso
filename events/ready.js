@@ -1,5 +1,6 @@
 // const { Collection } = require('discord.js');
 // const { logs_id, alerts } = require('../json/config.json');
+const { readdirSync } = require('fs');
 
 module.exports = {
 	name: 'ready',
@@ -7,10 +8,11 @@ module.exports = {
 
 		console.info('I\'m online!');
 
+		// logs channel
 		client.log = require('../helpers/log');
 
+		// Presence interval
 		const statuses = ['mover', 'derecha', 0];
-
 		setInterval(() => {
 
 			let nextStatus;
@@ -34,5 +36,15 @@ module.exports = {
 
 		}, 3000);
 
+		// Index new audio files in /audio
+		const indexedAudios = require('../json/audio.json');
+		const audioFiles = readdirSync('../audio').filter( f => f.endsWith('mp3') || f.endsWith('ogg'));
+
+		if(indexedAudios.length === audioFiles.length) return;
+		else {
+			const audioIterator = require('../helpers/audioIterator');
+			audioIterator();
+			return;
+		}
 	},
 };

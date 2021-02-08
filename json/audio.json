@@ -1,10 +1,54 @@
 {
+  "albion": {
+    "url": "albion.mp3",
+    "description": ""
+  },
+  "aoe2": {
+    "url": "aoe2.mp3",
+    "description": ""
+  },
+  "bomb": {
+    "url": "bomb.mp3",
+    "description": ""
+  },
+  "fede": {
+    "url": "fede.mp3",
+    "description": ""
+  },
+  "gogogo": {
+    "url": "gogogo.mp3",
+    "description": ""
+  },
+  "heavy": {
+    "url": "heavy.mp3",
+    "description": ""
+  },
+  "meperdonas": {
+    "url": "meperdonas.mp3",
+    "description": ""
+  },
+  "miabue": {
+    "url": "miabue.mp3",
+    "description": ""
+  },
   "microsofton": {
     "url": "microsofton.mp3",
     "description": ""
   },
-  "pesao": {
-    "url": "pesao.mp3",
+  "mission": {
+    "url": "mission.mp3",
+    "description": ""
+  },
+  "pipo": {
+    "url": "pipo.mp3",
+    "description": ""
+  },
+  "rey": {
+    "url": "rey.mp3",
+    "description": ""
+  },
+  "spawn": {
+    "url": "spawn.mp3",
     "description": ""
   },
   "tobecontinued": {
@@ -18,38 +62,5 @@
   "yooo": {
     "url": "yooo.mp3",
     "description": ""
-  },
-  "rey": {
-    "url": "rey.mp3"
-  },
-  "bomb": {
-    "url": "bomb.mp3"
-  },
-  "gogogo": {
-    "url": "gogogo.mp3"
-  },
-  "aoe2": {
-    "url": "aoe2.mp3"
-  },
-  "spawn": {
-    "url": "spawn.mp3"
-  },
-  "pipo": {
-    "url": "pipo.mp3"
-  },
-  "miabue": {
-    "url": "miabue.mp3"
-  },
-  "albion": {
-    "url": "albion.mp3"
-  },
-  "mission": {
-    "url": "mission.mp3"
-  },
-  "heavy":{
-    "url":"heavy.mp3"
-  },
-  "meperdonas":{
-    "url":"meperdonas.mp3"
   }
 }
