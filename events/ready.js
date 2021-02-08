@@ -38,9 +38,9 @@ module.exports = {
 
 		// Index new audio files in /audio
 		const indexedAudios = require('../json/audio.json');
-		const audioFiles = readdirSync('../audio').filter( f => f.endsWith('mp3') || f.endsWith('ogg'));
+		const audioFiles = readdirSync('./audio').filter( f => f.endsWith('mp3') || f.endsWith('ogg'));
 
-		if(indexedAudios.length === audioFiles.length) return;
+		if(Object.keys(indexedAudios).length === audioFiles.length) return;
 		else {
 			const audioIterator = require('../helpers/audioIterator');
 			audioIterator();
